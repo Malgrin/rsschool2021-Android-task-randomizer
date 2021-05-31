@@ -1,6 +1,5 @@
 package com.rsschool.android2021
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,13 +12,7 @@ class SecondFragment : Fragment(), BackPressedForFragments {
 
     private var backButton: Button? = null
     private var result: TextView? = null
-    private var transitItem: TransitItemFirstFragment? = null
     private var bufItem = 0
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        transitItem = context as TransitItemFirstFragment
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,7 +34,7 @@ class SecondFragment : Fragment(), BackPressedForFragments {
         result?.text = bufItem.toString()
 
         backButton?.setOnClickListener {
-            transitItem?.openCastFirstFragment(bufItem)
+            (activity as? TransitItemFirstFragment)?.openCastFirstFragment(bufItem)
         }
     }
 
@@ -54,7 +47,7 @@ class SecondFragment : Fragment(), BackPressedForFragments {
     }
 
     override fun onBackPressed() {
-        transitItem?.openCastFirstFragment(bufItem)
+        (activity as? TransitItemFirstFragment)?.openCastFirstFragment(bufItem)
     }
 
 
